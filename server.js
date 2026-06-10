@@ -2,6 +2,14 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+  res.json({ ok: true, service: 'roblox-proxy' });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ ok: true });
+});
+
 async function proxyRoblox(robloxUrl, res) {
   try {
     const response = await fetch(robloxUrl);
